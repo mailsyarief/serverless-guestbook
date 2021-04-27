@@ -14,6 +14,12 @@ const guestbook = {
   // add a single guestbood entry
   add(name, email, comment) {
     console.log('Sending', name, email, comment)
+    const data = {
+      'name' : name,
+      'email' : email,
+      'comment' : comment
+    }
+    console.log('dataa',data)
     return $.ajax({
       type: 'PUT',
       url: `${apiUrl}/entries`,
@@ -42,6 +48,7 @@ const guestbook = {
     $('#entries').html('Loading entries...');
     guestbook.get().done(function(result) {
       if (!result.entries) {
+        console.log(result)
         return;
       }
       
